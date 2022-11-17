@@ -8,6 +8,15 @@
         @if(Model.BillingInfo.Invoices?.Any() ?? false)
         {
             <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Number</th>
+                        <th>Amount</th>
+                        <th>Is paid</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
                 <tbody>
                     @foreach(var invoice in Model.BillingInfo.Invoices)
                     {

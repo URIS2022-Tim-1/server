@@ -1,4 +1,5 @@
-﻿using Bit.Core.Settings;
+﻿using System.Reflection.Metadata.Ecma335;
+using Bit.Core.Settings;
 using Bit.Core.Utilities;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Logging;
@@ -70,7 +71,7 @@ public class MailKitSmtpMailDeliveryService : IMailDeliveryService
         {
             if (_globalSettings.Mail.Smtp.TrustServer)
             {
-                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                client.ServerCertificateValidationCallback = (s, c, h, e) => e == System.Net.Security.SslPolicyErrors.None;
             }
 
             if (!_globalSettings.Mail.Smtp.StartTls && !_globalSettings.Mail.Smtp.Ssl &&
