@@ -160,7 +160,7 @@ public class DynamicAuthenticationSchemeProvider : AuthenticationSchemeProvider
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError(ex, "Error converting configuration to scheme for '{0}'", config.Id);
+                    _logger.LogError(ex, "Error converting configuration to scheme for '{id}'", config.Id);
                     continue;
                 }
                 if (scheme == null)
