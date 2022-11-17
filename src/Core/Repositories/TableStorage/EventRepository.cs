@@ -84,7 +84,7 @@ public class EventRepository : IEventRepository
             return;
         }
 
-        var entities = e.Where(ev => ev is EventTableEntity).Select(ev => ev as EventTableEntity);
+        var entities = e.OfType<EventTableEntity>();
         var entityGroups = entities.GroupBy(ent => ent.PartitionKey);
         foreach (var group in entityGroups)
         {
