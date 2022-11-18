@@ -236,7 +236,7 @@ public class CiphersController : Controller
     {
         if (!_globalSettings.SelfHosted &&
             (model.Ciphers.Count() > 6000 || model.FolderRelationships.Count() > 6000 ||
-                model.Folders.Count() > 1000))
+                model.Folders.Length > 1000))
         {
             throw new BadRequestException("You cannot import this much data at once.");
         }

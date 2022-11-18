@@ -46,13 +46,12 @@ public class ScimContext : IScimContext
             }
         }
 
-        if (RequestScimProvider == ScimProviderType.Default &&
-            httpContext.Request.Headers.TryGetValue("User-Agent", out var userAgent))
+        if ((RequestScimProvider == ScimProviderType.Default &&
+            httpContext.Request.Headers.TryGetValue("User-Agent", out var userAgent)) && (userAgent.ToString().StartsWith("Okta")))
         {
-            if (userAgent.ToString().StartsWith("Okta"))
-            {
+ 
                 RequestScimProvider = ScimProviderType.Okta;
-            }
+            
         }
         if (RequestScimProvider == ScimProviderType.Default &&
             httpContext.Request.Headers.ContainsKey("Adscimversion"))
