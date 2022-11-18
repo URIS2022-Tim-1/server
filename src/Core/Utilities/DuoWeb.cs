@@ -49,7 +49,7 @@ public static class DuoWeb
     private const int SKeyLength = 40;
     private const int AKeyLength = 40;
 
-    public static string ErrorUser = "ERR|The username passed to sign_request() is invalid.";
+    private static string ErrorUser = "ERR|The username passed to sign_request() is invalid.";
     public static string ErrorIKey = "ERR|The Duo integration key passed to sign_request() is invalid.";
     public static string ErrorSKey = "ERR|The Duo secret key passed to sign_request() is invalid.";
     public static string ErrorAKey = "ERR|The application secret key passed to sign_request() must be at least " +

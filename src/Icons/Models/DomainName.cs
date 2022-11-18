@@ -245,7 +245,6 @@ public class DomainName
     {
         private static volatile TLDRulesCache _uniqueInstance;
         private static object _syncObj = new object();
-        private static object _syncList = new object();
 
         private TLDRulesCache()
         {

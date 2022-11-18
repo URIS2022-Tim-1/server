@@ -101,7 +101,7 @@ public class DynamicAuthenticationSchemeProvider : AuthenticationSchemeProvider
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unable to load a dynamic authentication scheme for '{0}'", name);
+            _logger.LogError(ex, "Unable to load a dynamic authentication scheme for '{Name}'", name);
         }
 
         return null;

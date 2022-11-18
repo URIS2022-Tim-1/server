@@ -1705,7 +1705,10 @@ public class StripePaymentService : IPaymentService
                         braintreeCustomer.DefaultPaymentMethod);
                 }
             }
-            catch (Braintree.Exceptions.NotFoundException) { }
+            catch (Braintree.Exceptions.NotFoundException) 
+            {
+                //Raised when the record that you're trying to operate on can't be found. In this example btCustomerId isn't valid
+            }
         }
 
         if (customer.InvoiceSettings?.DefaultPaymentMethod?.Type == "card")

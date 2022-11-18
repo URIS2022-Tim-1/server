@@ -154,11 +154,13 @@ begin
 
         -- mark indexes XML,spatial and columnstore not to run online update 
         update #idxBefore set OnlineOpIsNotSupported=1 where [object_id] in (select [object_id] from #idxBefore where index_id >=1000)
+
+        DECLARE
+         @duplicateString varchar(20) = '---------------------------------------';
         
-        
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
         raiserror('Index Information:',0,0) with nowait
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
 
         select @msg = count(*) from #idxBefore where index_id in (1,2)
         set @msg = 'Total Indexes: ' + @msg
@@ -173,7 +175,7 @@ begin
         raiserror(@msg,0,0) with nowait
 
                 
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
 
             
             
@@ -224,9 +226,9 @@ begin
         order by sp.last_updated asc
 
         
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
         raiserror('Statistics Information:',0,0) with nowait
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
 
         select @msg = sum(modification_counter) from #statsBefore
         set @msg = 'Total Modifications: ' + @msg
@@ -236,7 +238,7 @@ begin
         set @msg = 'Modified Statistics: ' + @msg
         raiserror(@msg,0,0) with nowait
                 
-        raiserror('---------------------------------------',0,0) with nowait
+        raiserror(@duplicateString,0,0) with nowait
 
 
 

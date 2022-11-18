@@ -90,12 +90,6 @@ public class SendsController : Controller
     public async Task<IActionResult> GetSendFileDownloadData(string encodedSendId,
         string fileId, [FromBody] SendAccessRequestModel model)
     {
-        // Uncomment whenever we want to require the `send-id` header
-        //if (!_currentContext.HttpContext.Request.Headers.ContainsKey("Send-Id") ||
-        //    _currentContext.HttpContext.Request.Headers["Send-Id"] != encodedSendId)
-        //{
-        //    throw new BadRequestException("Invalid Send-Id header.");
-        //}
 
         var sendId = new Guid(CoreHelpers.Base64UrlDecode(encodedSendId));
         var send = await _sendRepository.GetByIdAsync(sendId);
