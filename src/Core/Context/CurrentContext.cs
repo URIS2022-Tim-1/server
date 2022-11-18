@@ -463,8 +463,11 @@ public class CurrentContext : ICurrentContext
     {
         bool hasClaim(string claimKey)
         {
-            return claimsDict.ContainsKey(claimKey) ?
-                claimsDict[claimKey].Any(x => x.Value == organizationId) : false;
+            if (claimsDict.ContainsKey(claimKey))
+            {
+                return claimsDict[claimKey].Any(x => x.Value == organizationId);
+            }
+            return false;
         }
 
         return new Permissions

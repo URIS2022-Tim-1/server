@@ -464,7 +464,7 @@ public class ProviderService : IProviderService
 
     public async Task LogProviderAccessToOrganizationAsync(Guid organizationId)
     {
-        if (organizationId == default)
+        if (organizationId == Guid.NewGuid())
         {
             return;
         }

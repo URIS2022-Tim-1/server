@@ -74,10 +74,6 @@ public abstract class BlockIpHostedService : IHostedService, IDisposable
         }
 
         var accessRuleResponse = await response.Content.ReadFromJsonAsync<AccessRuleResponse>(cancellationToken: cancellationToken);
-        if (!accessRuleResponse.Success)
-        {
-            return;
-        }
 
         // TODO: Send `accessRuleResponse.Result?.Id` message to unblock queue
     }
