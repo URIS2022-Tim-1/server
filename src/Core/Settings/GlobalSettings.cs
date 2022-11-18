@@ -205,7 +205,7 @@ public class GlobalSettings : IGlobalSettings
         }
         public string InternalScim
         {
-            get => _globalSettings.BuildInternalUri(_scim, "scim");
+            get => _globalSettings.BuildInternalUri(_internalScim, "scim");
             set => _internalScim = value;
         }
     }

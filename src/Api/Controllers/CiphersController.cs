@@ -104,7 +104,7 @@ public class CiphersController : Controller
         var userId = _userService.GetProperUserId(User).Value;
         var hasOrgs = _currentContext.Organizations?.Any() ?? false;
         // TODO: Use hasOrgs proper for cipher listing here?
-        var ciphers = await _cipherRepository.GetManyByUserIdAsync(userId, true || hasOrgs);
+        var ciphers = await _cipherRepository.GetManyByUserIdAsync(userId, hasOrgs);
         Dictionary<Guid, IGrouping<Guid, CollectionCipher>> collectionCiphersGroupDict = null;
         if (hasOrgs)
         {
@@ -235,8 +235,8 @@ public class CiphersController : Controller
     public async Task PostImport([FromBody] ImportCiphersRequestModel model)
     {
         if (!_globalSettings.SelfHosted &&
-            (model.Ciphers.Length > 6000 || model.FolderRelationships.Count() > 6000 ||
-                model.Folders.Count() > 1000))
+            (model.Ciphers.Count() > 6000 || model.FolderRelationships.Count() > 6000 ||
+                model.Folders.Length > 1000))
         {
             throw new BadRequestException("You cannot import this much data at once.");
         }

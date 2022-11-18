@@ -26,7 +26,7 @@ public class MetadataController : Controller
         }
 
         var authScheme = await _schemeProvider.GetSchemeAsync(scheme);
-        if (authScheme == null ||
+        if (
             !(authScheme is DynamicAuthenticationScheme dynamicAuthScheme) ||
             dynamicAuthScheme?.SsoType != SsoType.Saml2)
         {
@@ -59,7 +59,6 @@ public class MetadataController : Controller
         var metadataResult = CommandFactory
             .GetCommand(CommandFactory.MetadataCommand)
             .Run(requestdata, options);
-        //Response.Headers.Add("Content-Disposition", $"filename= bitwarden-saml2-meta-{scheme}.xml");
         return new ContentResult
         {
             Content = metadataResult.Content,
