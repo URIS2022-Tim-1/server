@@ -14,12 +14,11 @@ public static class ApiHelpers
         T obj = default(T);
         if (file != null && httpContext.Request.ContentLength.HasValue && httpContext.Request.ContentLength.Value <= maxSize)
         {
-            try
-            {
+            
                 using var stream = file.OpenReadStream();
                 obj = await JsonSerializer.DeserializeAsync<T>(stream, JsonHelpers.IgnoreCase);
-            }
-            catch { }
+            
+            
         }
 
         return obj;

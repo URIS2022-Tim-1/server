@@ -26,7 +26,7 @@ public class MetadataController : Controller
         }
 
         var authScheme = await _schemeProvider.GetSchemeAsync(scheme);
-        if (authScheme == null ||
+        if (
             !(authScheme is DynamicAuthenticationScheme dynamicAuthScheme) ||
             dynamicAuthScheme?.SsoType != SsoType.Saml2)
         {
