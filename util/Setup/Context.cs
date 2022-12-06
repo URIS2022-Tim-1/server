@@ -3,6 +3,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace Bit.Setup;
 
+// Comment
 public class Context
 {
     private const string ConfigPath = "/bitwarden/config.yml";
